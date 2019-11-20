@@ -10,7 +10,7 @@
             %li.main__top__left-box__member-list
             yoshio
         .main__top__light-btn
-          %a{:href => ""}
+          =link_to "#" do
             Edit
               
       .messages
@@ -23,15 +23,15 @@
           %p.messages__text
             今日も頑張る
       .submit
-        %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/3/messages", :enctype => "multipart/form-data", :method => "post"}
-          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          %input{:name => "authenticity_token", :type => "hidden", :value => "6HVYIUMXf4ysHu1udtZxrVIPYRKrG5tgTYsLIxdDW8Nq6/yWonnuu/IpYwnOjz7SCk4caTZvYN8YJ8Tj2nYhIg=="}/
-          %input#message_content.submit__type{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+        %form#new_message.new_message{charset: "UTF-8", action: "/groups/3/messages", enctype: "multipart/form-data", method: "post"}
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: "6HVYIUMXf4ysHu1udtZxrVIPYRKrG5tgTYsLIxdDW8Nq6/yWonnuu/IpYwnOjz7SCk4caTZvYN8YJ8Tj2nYhIg=="}/
+          %input#message_content.submit__type{name: "message[content]", placeholder: "type a message", type: "text"}/
           .submit__icon
-            %label{:class => "submit__icon.submit__icon--image", :for => "message_image"}
+            %label{class: "submit__icon.submit__icon--image", for: "message_image"}
               %i.fa.fa-picture-o.icon
-              %input#message_image.hidden{:name => "message[image]", :type => "file"}/
-          %input.submit__button{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+              %input#message_image.hidden{ name: "message[image]", type: "file"}/
+          %input.submit__button{data: "Send", name: "commit", type: "submit", value: "Send"}/
 
 
 
