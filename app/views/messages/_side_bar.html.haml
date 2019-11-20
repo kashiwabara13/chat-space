@@ -1,0 +1,21 @@
+.notification
+  .wrapper
+    .side
+      .side__top
+        .side__top__box
+          .side__top__box__name
+            yoshi
+          %ul.side__top__box__menu
+            %li.side__top__box__menu__new
+              =link_to "#", class: "contents__btn" do
+                %i.fa.fa-edit
+            %li.side__top__box__menu__edit
+              =link_to "#", class: "contents__btn" do
+                %i.fa.fa-cog
+      .group
+        =link_to "#" do
+          .group__name
+            エンジニア
+          .group__message
+            今日も頑張る
+
