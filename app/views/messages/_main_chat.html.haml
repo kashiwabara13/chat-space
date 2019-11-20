@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ChatSpace
+    %meta{:content => "authenticity_token", :name => "csrf-param"}/
+    %meta{:content => "sIG7Rqe7iEPyGS3t25CQYQjfZXYkFQg/teT4kZHmf4I/9jgQGtv/Yz/Z0rEeuOYhzCdDgrjx9TUjbEPoPyqFuA==", :name => "csrf-token"}/
+    %link{"data-turbolinks-track" => "reload", :href => "application.scss", :media => "all", :rel => "stylesheet"}/
+%body
+  .notification
+    .wrapper
+      .main
+        .main__top
+          .main__top__left-box
+            %h2.main__top__left-box__group
+              エンジニア
+            %ul.main__top__left-box__member
+              Member：
+              %li.main__top__left-box__member-list
+              yoshio
+          .main__top__light-btn
+            %a{:href => ""}
+              Edit
+              
+        .messages
+          .message
+            .message__box
+              %p.message__box__user
+                yoshi
+              %p.message__box__date
+                2019/11/19(Tue) 12:23:22
+            %p.messages__text
+              今日も頑張る
+        .submit
+          %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/3/messages", :enctype => "multipart/form-data", :method => "post"}
+            %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+            %input{:name => "authenticity_token", :type => "hidden", :value => "6HVYIUMXf4ysHu1udtZxrVIPYRKrG5tgTYsLIxdDW8Nq6/yWonnuu/IpYwnOjz7SCk4caTZvYN8YJ8Tj2nYhIg=="}/
+            %input#message_content.submit__type{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+            .submit__icon
+              %label{:class => "submit__icon.submit__icon--image", :for => "message_image"}
+                %i.fa.fa-picture-o.icon
+                %input#message_image.hidden{:name => "message[image]", :type => "file"}/
+            %input.submit__button{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+
+
+
+
+

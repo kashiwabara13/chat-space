@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ChatSpace
+    %meta{:content => "authenticity_token", :name => "csrf-param"}/
+    %meta{:content => "sIG7Rqe7iEPyGS3t25CQYQjfZXYkFQg/teT4kZHmf4I/9jgQGtv/Yz/Z0rEeuOYhzCdDgrjx9TUjbEPoPyqFuA==", :name => "csrf-token"}/
+    %link{"data-turbolinks-track" => "reload", :href => "application.scss", :media => "all", :rel => "stylesheet"}/
+%body
+  .notification
+    .wrapper
+      .side
+        .side__top
+          .side__top__box
+            .side__top__box__name
+              yoshi
+            %ul.side__top__box__menu
+              %li.side__top__box__menu__new
+                %a{:href => "/groups/new"}
+                  %i.fa.fa-edit
+              %li.side__top__box__menu__edit
+                %a{:href => "/users/2593/edit"}
+                  %i.fa.fa-cog
+        .group
+          %a.group__link{:href => "/groups/3/messages"}
+            .group__name
+              エンジニア
+            .group__message
+              今日も頑張る
+
