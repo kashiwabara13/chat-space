@@ -14,9 +14,9 @@
                 %i.fa.fa-cog
       .group
         - current_user.groups.each do |group|
-          = link_to "/groups/1/edit" do
+          = link_to group_messages_path(group) do
             .group__name
               = group.name
             .group__message
-              メッセージはまだありません。
+              = group.show_last_message
 

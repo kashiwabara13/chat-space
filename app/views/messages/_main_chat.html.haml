@@ -4,36 +4,66 @@
       .main__top
         .main__top__left-box
           %h2.main__top__left-box__group
-            エンジニア
+            = @group.name
           %ul.main__top__left-box__member
             Member：
             %li.main__top__left-box__member-list
-            yoshio
+              - @members.each do |member|
+                = member.name
         .main__top__light-btn
-          =link_to "#" do
-            Edit
-              
+          = link_to "Edit", edit_group_path(params[:group_id]), method: :get
+
       .messages
-        .message
-          .message__box
-            %p.message__box__user
-              yoshi
-            %p.message__box__date
-              2019/11/19(Tue) 12:23:22
-          %p.messages__text
-            今日も頑張る
+        = render @messages
+      -# .messages
+      -#   = render @messages
+      -#   .message
+      -#     .message__box
+      -#       %p.message__box__user
+      -#         = message.user.name
+      -#       %p.message__box__date
+      -#         = message.created_at.strftime("%Y/%m/%d %H:%M")
+      -#     %p.messages__text
+      -#       - if message.content.present?
+      -#         %p.lower-message__content
+      -#           = message.content
+      -#       = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+      -# .submit
+      -#   %form#new_message.new_message{charset: "UTF-8", action: "/groups/3/messages", enctype: "multipart/form-data", method: "post"}
+      -#     %input{name: "utf8", type: "hidden", value: "✓"}/
+      -#     %input{name: "authenticity_token", type: "hidden", value: "6HVYIUMXf4ysHu1udtZxrVIPYRKrG5tgTYsLIxdDW8Nq6/yWonnuu/IpYwnOjz7SCk4caTZvYN8YJ8Tj2nYhIg=="}/
+      -#     %input#message_content.submit__type{name: "message[content]", placeholder: "type a message", type: "text"}/
+      -#     .submit__icon
+      -#       %label{class: "submit__icon.submit__icon--image", for: "message_image"}
+      -#         %i.fa.fa-picture-o.icon
+      -#         %input#message_image.hidden{ name: "message[image]", type: "file"}/
+      -#     %input.submit__button{data: "Send", name: "commit", type: "submit", value: "Send"}/
       .submit
-        %form#new_message.new_message{charset: "UTF-8", action: "/groups/3/messages", enctype: "multipart/form-data", method: "post"}
-          %input{name: "utf8", type: "hidden", value: "✓"}/
-          %input{name: "authenticity_token", type: "hidden", value: "6HVYIUMXf4ysHu1udtZxrVIPYRKrG5tgTYsLIxdDW8Nq6/yWonnuu/IpYwnOjz7SCk4caTZvYN8YJ8Tj2nYhIg=="}/
-          %input#message_content.submit__type{name: "message[content]", placeholder: "type a message", type: "text"}/
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'submit__type', placeholder: 'type a message'
           .submit__icon
-            %label{class: "submit__icon.submit__icon--image", for: "message_image"}
-              %i.fa.fa-picture-o.icon
-              %input#message_image.hidden{ name: "message[image]", type: "file"}/
-          %input.submit__button{data: "Send", name: "commit", type: "submit", value: "Send"}/
+            = f.label :image, class: 'form__mask__image' do
+              = icon('fas', 'image', class: 'icon')
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'submit__button'
+
+-# .form
+-#       = form_for [@group, @message] do |f|
+-#         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+-#         .form__mask
+-#           = f.label :image, class: 'form__mask__image' do
+-#             = icon('fas', 'image', class: 'icon')
+-#             = f.file_field :image, class: 'hidden'
+-#         = f.submit 'Send', class: 'form__submit'
 
 
-
-
-
+      -# .submit
+      -#   %form#new_message.new_message{charset: "UTF-8", action: "/groups/3/messages", enctype: "multipart/form-data", method: "post"}
+      -#     %input{name: "utf8", type: "hidden", value: "✓"}/
+      -#     %input{name: "authenticity_token", type: "hidden", value: "6HVYIUMXf4ysHu1udtZxrVIPYRKrG5tgTYsLIxdDW8Nq6/yWonnuu/IpYwnOjz7SCk4caTZvYN8YJ8Tj2nYhIg=="}/
+      -#     %input#message_content.submit__type{name: "message[content]", placeholder: "type a message", type: "text"}/
+      -#     .submit__icon
+      -#       %label{class: "submit__icon.submit__icon--image", for: "message_image"}
+      -#         %i.fa.fa-picture-o.icon
+      -#         %input#message_image.hidden{ name: "message[image]", type: "file"}/
+      -#     %input.submit__button{data: "Send", name: "commit", type: "submit", value: "Send"}/
