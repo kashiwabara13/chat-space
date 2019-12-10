@@ -39,7 +39,7 @@
       -#         %input#message_image.hidden{ name: "message[image]", type: "file"}/
       -#     %input.submit__button{data: "Send", name: "commit", type: "submit", value: "Send"}/
       .submit
-        = form_for [@group, @message] do |f|
+        = form_for [@group, @message] ,html:{class: "js-form" } do |f|
           = f.text_field :content, class: 'submit__type', placeholder: 'type a message'
           .submit__icon
             = f.label :image, class: 'form__mask__image' do
